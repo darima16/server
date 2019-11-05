@@ -13,7 +13,9 @@ class Server:
             self.dct = json.load(f)
 
     def put(self, key, value, timestamp):
-        #self.STORAGE = path.join(gettempdir(), 'storage.data')
+        self.STORAGE = path.join(gettempdir(), 'storage.data')
+        with open(self.STORAGE, "r") as f:
+            self.dct = json.load(f)
         if key not in self.dct:
             self.dct[key] = {}
         self.dct[key][timestamp] = value
